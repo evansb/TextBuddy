@@ -5,10 +5,10 @@
 #include "AbstractFeature.h"
 #include "TextList.h"
 
+// A singleton that represents a running instance of the TextBuddy application.
+// This class manages a shared TextList object and a list of Features object.
+// I/O also should in general only be done here.
 class App {
-    /* A singleton that represents a running instance of the TextBuddy application.
-       This class manages a shared TextList object and a list of Features object.
-       I/O also should in general only be done here. */
 public:
     typedef const std::string& Command;
     typedef struct SharedData {
@@ -22,6 +22,8 @@ public:
 
     static const std::string WELCOME_MESSAGE;
     static const std::string COMMAND_PROMPT;
+    static const std::string COMMAND_INVALID;
+
     static std::vector<std::shared_ptr<Feature>> features;
     static SharedData newSharedData(const std::string& filename);
     static void runWithFile(const std::string& filename);

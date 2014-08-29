@@ -9,6 +9,8 @@
 
 const std::string App::WELCOME_MESSAGE = "Welcome to TextBuddy. %s is ready for use\n";
 const std::string App::COMMAND_PROMPT = "command: ";
+const std::string App::COMMAND_INVALID = "Invalid command, please try again\n";
+
 std::vector<std::shared_ptr<App::Feature>> App::features;
 
 void App::loadFeatures() {
@@ -21,31 +23,50 @@ void App::loadFeatures() {
 
 App::SharedData App::newSharedData(const std::string& filename) {
     App::SharedData sharedData(filename);
-    std::ifstream fileIn(filename);
-    std::string line;
-    while(getline(fileIn, line)) {
-        sharedData.textList.addItem(line);
-        // Remove trailing '\n' character naturally
-        fileIn.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    }
     return std::move(sharedData);
 }
 
+void readFileToList(
+        const std::string& filename,
+        TextList& textList) {
+    std::ifstream fileIn(filename);
+    std::string line;
+    while(getline(fileIn, line)) {
+        textList.addItem(line);
+        // Remove trailing '\n' character naturally
+        fileIn.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+}
+
+bool interpretAndExecute(
+        std::string& userInput, 
+        App::SharedData& sharedData) {
+    bool isExecuting = false;
+    std::for_each(
+        App::features.begin(),
+        App::features.end(),
+        [&] (std::shared_ptr<App::Feature> feature) {
+            if (feature->interpret(userInput)) {
+                std::cout << feature->execute(sharedData);
+                isExecuting = true;
+            }
+        }
+    );
+    return isExecuting;
+}
+              
 void App::runWithFile(const std::string& filename) {
-    App::loadFeatures();
-    SharedData sharedData = App::newSharedData(filename);
+    SharedData sharedData = newSharedData(filename);
+    loadFeatures();
+    readFileToList(filename, sharedData.textList);
+    printf(WELCOME_MESSAGE.c_str(), filename.c_str());
 
     std::string userInput;
-
-    printf(WELCOME_MESSAGE.c_str(), filename.c_str());
     while (sharedData.appIsRunning) {
         printf(COMMAND_PROMPT.c_str());
         std::getline(std::cin, userInput);
-        std::for_each(begin(App::features), end(App::features),
-            [userInput, &sharedData](std::shared_ptr<Feature> feature) mutable {
-            if (feature->interpret(userInput)) {
-                std::cout << feature->execute(sharedData);
-            }
-        });
+        if (!interpretAndExecute(userInput, sharedData)) {
+            printf(COMMAND_INVALID.c_str());
+        }
     }
 }
