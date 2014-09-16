@@ -11,6 +11,7 @@
 class App {
     friend class TestAddItem;
     friend class TestClearItems;
+    friend class TestDeleteItem;
 public:
     // Command that will be interpreted by feature is string.
     typedef const std::string& Command;

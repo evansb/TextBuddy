@@ -10,6 +10,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextBuddyTest", "TextBuddyT
 		{9573789E-D0AA-44CC-B28D-548B633CFFB9} = {9573789E-D0AA-44CC-B28D-548B633CFFB9}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextBuddyExecutable", "TextBuddyExecutable\TextBuddyExecutable.vcxproj", "{CCDD5E81-1705-4AA9-A814-6263EDD14B9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -24,6 +26,10 @@ Global
 		{AD5C1896-9D7A-4109-A92D-888EAA523D26}.Debug|Win32.Build.0 = Debug|Win32
 		{AD5C1896-9D7A-4109-A92D-888EAA523D26}.Release|Win32.ActiveCfg = Release|Win32
 		{AD5C1896-9D7A-4109-A92D-888EAA523D26}.Release|Win32.Build.0 = Release|Win32
+		{CCDD5E81-1705-4AA9-A814-6263EDD14B9F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CCDD5E81-1705-4AA9-A814-6263EDD14B9F}.Debug|Win32.Build.0 = Debug|Win32
+		{CCDD5E81-1705-4AA9-A814-6263EDD14B9F}.Release|Win32.ActiveCfg = Release|Win32
+		{CCDD5E81-1705-4AA9-A814-6263EDD14B9F}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

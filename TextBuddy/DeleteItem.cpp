@@ -11,14 +11,21 @@ const std::string DeleteItem::DELETE_KEYWORD = "delete";
 /// \param[command] command to be interpreted.
 /// \return true if a valid command, false otherwise
 bool DeleteItem::interpret(const App::Command& command) {
+    this->indexToDelete = -1;
     int firstSpacePos = command.find(' ');
     std::string firstWord = command.substr(0, firstSpacePos);
     bool deleteKeywordFound = (firstWord == DELETE_KEYWORD);
-    if (deleteKeywordFound) {
+    bool noCharAfterDelete = deleteKeywordFound && (command.size() == DELETE_KEYWORD.size());
+    if (!noCharAfterDelete && deleteKeywordFound) {
         std::string indexString = command.substr(firstSpacePos + 1, command.size());
-        int indexInt = atoi(indexString.c_str());
-        this->indexToDelete = indexInt - 1;
-        return true;
+        bool indexIsInt = std::all_of(indexString.cbegin(), indexString.cend(), isdigit);
+        if (!indexIsInt) {
+            return false;
+        } else {
+            int indexInt = atoi(indexString.c_str());
+            this->indexToDelete = indexInt - 1;
+            return true;
+        }
     } else {
         return false;
     }
@@ -29,15 +36,15 @@ bool DeleteItem::interpret(const App::Command& command) {
 /// Otherwise delete the item from the text list stored in data.
 /// \param[data] Shared data passed to this method.
 /// \return A message telling that delete is un/successful.
-App::Feedback DeleteItem::execute(App::SharedData& data) {
-    auto deletedItem = std::move(data.textList.getAt(indexToDelete));
-    
+App::Feedback DeleteItem::execute(App::SharedData& data) { 
+    TextList::ItemType deletedItem;
     // Check index validity.
     bool indexIsValid = indexToDelete >= 0 && indexToDelete < data.textList.getSize();
     bool integerInvalidToParse = (indexToDelete == -1);
 
     // Delete the item.
     if (indexIsValid) {
+        deletedItem = std::move(data.textList.getAt(indexToDelete));
         data.textList.removeItem(indexToDelete);
         indexToDelete = -1; // Reset index to invalid again.
     }
