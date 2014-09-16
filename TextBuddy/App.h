@@ -9,9 +9,9 @@
 /// This class keeps the shared data and a list of features supported in TextBuddy.
 /// Whenever possible, I/O to stdin/sdout should in general only be done here.
 class App {
-public:
     friend class TestAddItem;
-
+    friend class TestClearItems;
+public:
     // Command that will be interpreted by feature is string.
     typedef const std::string& Command;
 

@@ -5,10 +5,9 @@
 #include "AddItem.h"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-ONLY_USED_AT_NAMESPACE_SCOPE class TestAddItem : public ::Microsoft::VisualStudio::CppUnitTestFramework::TestClass<TestAddItem> {
-
+TEST_CLASS(TestAddItem) {
 public:	
-    TEST_METHOD(TestInterpret) {
+    TEST_METHOD(TestAddItemInterpret) {
         auto mock = std::make_shared<AddItem>();
         
         Assert::IsTrue(mock->interpret(std::string("add Hello World")));
@@ -16,10 +15,12 @@ public:
         Assert::IsFalse(mock->interpret(std::string("badd World")));
         Assert::IsFalse(mock->interpret(std::string("\\nadd World")));
     }
-    TEST_METHOD(TestExecute) {
+
+    TEST_METHOD(TestAddItemExecute) {
         auto mock = std::make_shared<AddItem>();
         auto mockData = App::newSharedData("foo");
 
+        App::newSharedData("foo");
         mock->interpret("add Hello World");
         mock->execute(mockData);
         Assert::AreEqual(mockData.textList.getAt(0), std::string("Hello World"));
@@ -28,4 +29,5 @@ public:
         mock->execute(mockData);
         Assert::AreEqual(mockData.textList.getAt(1), std::string("Hello Marnie"));
     }
+
 };

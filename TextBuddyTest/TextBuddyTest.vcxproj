@@ -90,7 +90,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="unittest1.cpp" />
+    <ClCompile Include="TestAddItem.cpp" />
+    <ClCompile Include="TestClearItems.cpp" />
+    <ClCompile Include="TestDeleteItem.cpp" />
+    <ClCompile Include="TestDisplayTextList.cpp" />
+    <ClCompile Include="TestSaveAndExit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TextBuddy\TextBuddy.vcxproj">
