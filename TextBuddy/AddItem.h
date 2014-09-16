@@ -7,6 +7,7 @@
 
 /// TextBuddy feature to add item to the list. 
 class AddItem : public App::Feature {
+    friend class TestAddItem;
 public:
     /// Default constructor
     AddItem() = default;

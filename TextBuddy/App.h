@@ -10,6 +10,8 @@
 /// Whenever possible, I/O to stdin/sdout should in general only be done here.
 class App {
 public:
+    friend class TestAddItem;
+
     // Command that will be interpreted by feature is string.
     typedef const std::string& Command;
 
