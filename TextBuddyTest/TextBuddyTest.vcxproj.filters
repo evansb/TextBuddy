@@ -41,5 +41,8 @@
     <ClCompile Include="TestDisplayTextList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TestIntegration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

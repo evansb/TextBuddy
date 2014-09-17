@@ -94,6 +94,7 @@
     <ClCompile Include="TestClearItems.cpp" />
     <ClCompile Include="TestDeleteItem.cpp" />
     <ClCompile Include="TestDisplayTextList.cpp" />
+    <ClCompile Include="TestIntegration.cpp" />
     <ClCompile Include="TestSaveAndExit.cpp" />
   </ItemGroup>
   <ItemGroup>

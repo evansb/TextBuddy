@@ -1,5 +1,4 @@
-// TextBuddyExecutable.cpp : Defines the entry point for the console application.
-//
+/// TextBuddyExecutable.cpp : Defines the entry point for the TextBuddy application.
 
 #include "stdafx.h"
 #include "App.h"
@@ -11,6 +10,4 @@ int main(int argc, char* argv[]) {
         App::runWithFile(std::string(argv[1]));
     }
     return 0;
-
 }
-
