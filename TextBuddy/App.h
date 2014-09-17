@@ -13,6 +13,7 @@ class App {
     friend class TestClearItems;
     friend class TestDeleteItem;
 	friend class TestSortTextList;
+	friend class TestSearchTextList;
 public:
     // Command that will be interpreted by feature is string.
     typedef const std::string& Command;

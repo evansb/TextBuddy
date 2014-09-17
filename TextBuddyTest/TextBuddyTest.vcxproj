@@ -96,6 +96,7 @@
     <ClCompile Include="TestDisplayTextList.cpp" />
     <ClCompile Include="TestIntegration.cpp" />
     <ClCompile Include="TestSaveAndExit.cpp" />
+    <ClCompile Include="TestSearchTextList.cpp" />
     <ClCompile Include="TestSortTextList.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -33,5 +33,4 @@ public:
 		Assert::AreEqual(mockData.textList.getAt(1), std::string("Hello World"));
 
 	}
-
 };

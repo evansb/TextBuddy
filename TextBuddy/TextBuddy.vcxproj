@@ -89,6 +89,7 @@
     <ClInclude Include="DeleteItem.h" />
     <ClInclude Include="DisplayTextList.h" />
     <ClInclude Include="SaveAndExit.h" />
+    <ClInclude Include="SearchTextList.h" />
     <ClInclude Include="SortTextList.h" />
     <ClInclude Include="TextList.h" />
     <ClInclude Include="stdafx.h" />
@@ -101,6 +102,7 @@
     <ClCompile Include="DeleteItem.cpp" />
     <ClCompile Include="DisplayTextList.cpp" />
     <ClCompile Include="SaveAndExit.cpp" />
+    <ClCompile Include="SearchTextList.cpp" />
     <ClCompile Include="SortTextList.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
