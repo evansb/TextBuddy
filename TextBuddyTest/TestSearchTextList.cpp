@@ -2,6 +2,7 @@
 #include "CppUnitTest.h"
 
 #include "App.h"
+#include "DisplayTextList.h"
 #include "SearchTextList.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -19,6 +20,7 @@ public:
 
 	TEST_METHOD(TestSearchTextListExecute) {
 		auto mock = std::make_shared<SearchTextList>();
+		auto display = std::make_shared<DisplayTextList>();
 		auto mockData = App::newSharedData("foo");
 		auto mockResult = App::newSharedData("boo");
 		mockData.textList.addItem("Hello World");
@@ -26,6 +28,8 @@ public:
 		mockResult.textList.addItem("Hello World");
 		mock->interpret("search Notfound");
 		Assert::AreEqual(mock->execute(mockData), SearchTextList::KEYWORD_NOT_FOUND);
+		mock->interpret("search Hello");
+		Assert::AreEqual(mock->execute(mockData), display->execute(mockResult));
 	}
 
 };
