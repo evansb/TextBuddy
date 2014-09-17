@@ -22,8 +22,9 @@ bool SearchTextList::interpret(const App::Command& command) {
 
 	// Consume one word as a search keyword, if there is no more
 	// word or more than one words, return false
-	inString >> searchKeyword;
-	if (!(inString >> dummy)) {
+	bool searchKeywordExists = static_cast<bool>(inString >> searchKeyword);
+	bool noMoreWords = !static_cast<bool>(inString >> dummy);
+	if (searchKeywordExists && noMoreWords) {
 		inputCache = searchKeyword;
 		return true;
 	} else {
