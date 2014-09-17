@@ -11,7 +11,9 @@ public:
 	TEST_METHOD(TestSearchTextListInterpret) {
 		auto mock = std::make_shared<SearchTextList>();
 		Assert::IsTrue(mock->interpret("search Hello"));
+		Assert::AreEqual(mock->inputCache, std::string("Hello"));
 		Assert::IsFalse(mock->interpret("serach Hello"));
+		Assert::IsFalse(mock->interpret("search Hello World"));
 	}
 
 	TEST_METHOD(TestSearchTextListExecute) {
