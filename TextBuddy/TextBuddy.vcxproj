@@ -89,6 +89,7 @@
     <ClInclude Include="DeleteItem.h" />
     <ClInclude Include="DisplayTextList.h" />
     <ClInclude Include="SaveAndExit.h" />
+    <ClInclude Include="SortTextList.h" />
     <ClInclude Include="TextList.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="App.h" />
@@ -100,11 +101,11 @@
     <ClCompile Include="DeleteItem.cpp" />
     <ClCompile Include="DisplayTextList.cpp" />
     <ClCompile Include="SaveAndExit.cpp" />
+    <ClCompile Include="SortTextList.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="TextBuddy.cpp" />
     <ClCompile Include="TextList.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
