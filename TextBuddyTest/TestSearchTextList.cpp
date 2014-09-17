@@ -14,6 +14,7 @@ public:
 		Assert::AreEqual(mock->inputCache, std::string("Hello"));
 		Assert::IsFalse(mock->interpret("serach Hello"));
 		Assert::IsFalse(mock->interpret("search Hello World"));
+		Assert::IsFalse(mock->interpret("search"));
 	}
 
 	TEST_METHOD(TestSearchTextListExecute) {
