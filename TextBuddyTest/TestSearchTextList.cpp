@@ -13,7 +13,7 @@ public:
 		Assert::IsTrue(mock->interpret("search Hello"));
 	}
 
-	TEST_METHOD(TTestSearchTextListExecute) {
+	TEST_METHOD(TestSearchTextListExecute) {
 		auto mock = std::make_shared<SearchTextList>();
 		auto mockData = App::newSharedData("foo");
 		auto mockResult = App::newSharedData("boo");
