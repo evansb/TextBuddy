@@ -11,6 +11,7 @@ public:
 	TEST_METHOD(TestSortTextListInterpret) {
 		auto mock = std::make_shared<SortTextList>();
 		Assert::IsTrue(mock->interpret("sort"));
+		Assert::IsFalse(mock->interpret("delete"));
 	}
 
 	TEST_METHOD(TestSortTextListExecute) {
@@ -21,6 +22,15 @@ public:
 		mock->execute(mockData);
 		Assert::AreEqual(mockData.textList.getAt(0), std::string("Abby James"));
 		Assert::AreEqual(mockData.textList.getAt(1), std::string("Hello World"));
+
+		mockData.textList.clearItems();
+
+		mockData.textList.addItem("Hello World");
+		mockData.textList.addItem("Abby James");
+		mock->execute(mockData);
+		Assert::AreEqual(mockData.textList.getAt(0), std::string("Abby James"));
+		Assert::AreEqual(mockData.textList.getAt(1), std::string("Hello World"));
+
 	}
 
 };
