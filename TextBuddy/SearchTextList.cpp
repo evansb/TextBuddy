@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "SearchTextList.h"
+#include "DisplayTextList.h"
 
 const std::string SearchTextList::SEARCH_KEYWORD = "search";
 const std::string SearchTextList::KEYWORD_NOT_FOUND = "Keyword not found\n";
@@ -37,6 +38,24 @@ bool SearchTextList::interpret(const App::Command& command) {
 /// as string.
 /// \param [data] Shared data passed to this method.
 /// \return Matched items displayed in numbered order.
-App::Feedback SearchTextList::execute(App::SharedData& data) {
-	return KEYWORD_NOT_FOUND;
+App::Feedback SearchTextList::execute(App::SharedData& data) {	
+	TextList found;
+	auto display = std::make_shared<DisplayTextList>();
+	std::for_each(
+		data.textList.cbegin(),
+		data.textList.cend(),
+		[&] (TextList::ItemType item) {
+			bool match = item.find(inputCache) != std::string::npos;
+			if (match) {
+				found.addItem(item);
+			}
+		}
+	);
+	if (found.isEmpty()) {
+		return KEYWORD_NOT_FOUND;
+	} else {
+		App::SharedData tempData("foo");
+		tempData.textList = found;
+		return display->execute(tempData);
+	}
 }
