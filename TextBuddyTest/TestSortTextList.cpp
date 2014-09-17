@@ -12,6 +12,7 @@ public:
 		auto mock = std::make_shared<SortTextList>();
 		Assert::IsTrue(mock->interpret("sort"));
 		Assert::IsFalse(mock->interpret("delete"));
+		Assert::IsFalse(mock->interpret("sorts"));
 	}
 
 	TEST_METHOD(TestSortTextListExecute) {
