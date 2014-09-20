@@ -35,13 +35,7 @@
     <ClCompile Include="TestDeleteItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TestSaveAndExit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TestDisplayTextList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TestIntegration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TestSortTextList.cpp">
