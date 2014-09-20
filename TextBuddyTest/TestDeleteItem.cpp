@@ -8,6 +8,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 TEST_CLASS(TestDeleteItem) {
 public:
+	/// Test if delete command is being interpreted correctly.
     TEST_METHOD(TestDeleteItemInterpret) {
         auto mock = std::make_shared<DeleteItem>();
         Assert::IsTrue(mock->interpret("delete 0"));
@@ -16,6 +17,7 @@ public:
         Assert::IsFalse(mock->interpret("delete"));
     }
 
+	/// Test if delete command is being executed correctly.
     TEST_METHOD(TestDeleteItemExecute) {
         auto mock = std::make_shared<DeleteItem>();
         auto mockData = App::newSharedData("foo");

@@ -9,6 +9,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 TEST_CLASS(TestDisplayTextList) {
 public:
+	/// Test if search command is being interpreted correctly.
     TEST_METHOD(TestDisplayTextListInterpret) {
         auto mock = std::make_shared<DisplayTextList>();
         Assert::IsTrue(mock->interpret("display"));

@@ -8,6 +8,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 TEST_CLASS(TestSortTextList) {
 public:
+	/// Test if sort command is being executed correctly.
 	TEST_METHOD(TestSortTextListInterpret) {
 		auto mock = std::make_shared<SortTextList>();
 		Assert::IsTrue(mock->interpret("sort"));
@@ -15,6 +16,7 @@ public:
 		Assert::IsFalse(mock->interpret("sorts"));
 	}
 
+	/// Test if sort command is being executed correctly.
 	TEST_METHOD(TestSortTextListExecute) {
 		auto mock = std::make_shared<SortTextList>();
 		auto mockData = App::newSharedData("foo");
@@ -31,6 +33,5 @@ public:
 		mock->execute(mockData);
 		Assert::AreEqual(mockData.textList.getAt(0), std::string("Abby James"));
 		Assert::AreEqual(mockData.textList.getAt(1), std::string("Hello World"));
-
 	}
 };

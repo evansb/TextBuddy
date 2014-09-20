@@ -8,6 +8,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 TEST_CLASS(TestClearItems) {
 public:
+	/// Test if clear command is being interpreted correctly.
     TEST_METHOD(TestClearItemsInterpret) {
         auto mock = std::make_shared<ClearItems>();
         Assert::IsTrue(mock->interpret("clear"));
@@ -15,6 +16,7 @@ public:
         Assert::IsFalse(mock->interpret("clea"));
     }
 
+	/// Test if clear command is being executed correctly.
     TEST_METHOD(TestClearItemsExecute) {
         auto mock = std::make_shared<ClearItems>();
         auto mockData = App::newSharedData("foo");

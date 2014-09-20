@@ -7,6 +7,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 TEST_CLASS(TestAddItem) {
 public:	
+	/// Test if add command is being executed correctly.
     TEST_METHOD(TestAddItemInterpret) {
         auto mock = std::make_shared<AddItem>();
         
@@ -16,6 +17,7 @@ public:
         Assert::IsFalse(mock->interpret(std::string("\\nadd World")));
     }
 
+	/// Test if add command is being executed correctly.
     TEST_METHOD(TestAddItemExecute) {
         auto mock = std::make_shared<AddItem>();
         auto mockData = App::newSharedData("foo");

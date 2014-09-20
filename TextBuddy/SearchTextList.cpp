@@ -40,7 +40,6 @@ bool SearchTextList::interpret(const App::Command& command) {
 /// \return Matched items displayed in numbered order.
 App::Feedback SearchTextList::execute(App::SharedData& data) {	
 	TextList found;
-	auto display = std::make_shared<DisplayTextList>();
 	std::for_each(
 		data.textList.cbegin(),
 		data.textList.cend(),
@@ -54,8 +53,12 @@ App::Feedback SearchTextList::execute(App::SharedData& data) {
 	if (found.isEmpty()) {
 		return KEYWORD_NOT_FOUND;
 	} else {
+		// Store found items to a list.
 		App::SharedData tempData("foo");
 		tempData.textList = found;
+		
+		// Display the list to the user.
+		auto display = std::make_shared<DisplayTextList>();
 		return display->execute(tempData);
 	}
 }
